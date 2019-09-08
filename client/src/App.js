@@ -1,5 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import React pages
+import Search from './pages/Search';
+import Error404 from './pages/Error404';
+
 
 
 class App extends React.Component {
@@ -7,14 +11,13 @@ class App extends React.Component {
     return (
       <Router>
       <div>
-        <h1>Hello World</h1>
         {/* <Nav /> */}
-        {/* <Switch> */}
-          {/* <Route exact path="/" component={Books} /> */}
+        <Switch>
+          <Route exact path="/" component={Search} />
           {/* <Route exact path="/books" component={Books} /> */}
           {/* <Route exact path="/books/:id" component={Detail} /> */}
-          {/* <Route component={NoMatch} /> */}
-        {/* </Switch> */}
+          <Route component={Error404} />
+        </Switch>
       </div>
       </Router>
     );
