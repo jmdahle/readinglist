@@ -1,9 +1,14 @@
 import React from 'react';
+import Container from '../components/Container';
 
 class Error404 extends React.Component {
     render() {
         return(
-            <h1>Error 404</h1>
+            <div>
+                <Container>
+                    <h1>Error 404</h1>
+                </Container>
+            </div>
         );
     }
 }

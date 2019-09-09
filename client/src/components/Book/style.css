@@ -1,0 +1,6 @@
+.game-card {
+    display: inline-block;
+    border: 1px solid #333333;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.5);
+    margin: 35px;
+}
