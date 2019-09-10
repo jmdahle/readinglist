@@ -1,6 +1,18 @@
-.game-card {
-    display: inline-block;
+.book-card {
+    /* display: inline-block; */
     border: 1px solid #333333;
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.5);
     margin: 35px;
+    padding: 15px;
+    background-color: #c2efb3;
+}
+
+.btn-style {
+    background-color: #e15554;
+    color: #ffffff;
+    margin: 3px;
+}
+
+.btn-style:hover {
+    color: #ffffff;
 }

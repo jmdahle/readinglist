@@ -1,4 +1,9 @@
 .btn-style {
     background-color: #e15554;
     color: #ffffff;
+    margin: 3px;
+}
+
+.btn-style:hover {
+    color: #ffffff;
 }

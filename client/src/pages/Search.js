@@ -30,7 +30,7 @@ class Search extends React.Component {
         console.log(`searching... ${query}`);
         API.search(query)
             .then( jsonData => { 
-                console.log(jsonData);
+                // console.log(jsonData);
                 this.setState({
                     searchResults: jsonData.data.items,
                     searchText: ''
@@ -41,9 +41,22 @@ class Search extends React.Component {
             });
     }
 
-    clickBook = event => {
-        event.preventDefault();
-        console.log('clicked a book');
+    openBookPreview = previewLink => {
+        console.log(`open preview at ${previewLink}`);
+        window.open(previewLink, 'bookpreview');
+    }
+
+    saveBook = bookid => {
+        console.log(`save book with id ${bookid}`);
+        let selectedBook = this.state.searchResults.filter( arrayitem => arrayitem.id === bookid );
+        let bookToSave = {
+            foreignid: selectedBook[0].id,
+            title: selectedBook[0].volumeInfo.title,
+            authors: selectedBook[0].volumeInfo.authors.join(','),
+            description: selectedBook[0].volumeInfo.description,
+            image: selectedBook[0].volumeInfo.imageLinks.smallThumbnail,
+            previewLink: selectedBook[0].volumeInfo.previewLink
+        }
     }
 
     render() {
@@ -66,7 +79,10 @@ class Search extends React.Component {
                             authors={book.volumeInfo.authors.join(',')}
                             description={book.volumeInfo.description}
                             image={book.volumeInfo.imageLinks.smallThumbnail}
-                            clickBook={this.clickBook}
+                            btn1Click={ () => this.openBookPreview(book.volumeInfo.previewLink)}
+                            btn1Text='PREVIEW'
+                            btn2Click={() => this.saveBook(book.id)}
+                            btn2Text='SAVE'
                         /> 
                     ))}
                 </Card>

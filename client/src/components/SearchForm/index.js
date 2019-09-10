@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+// import LoadingSpinner from '../LoadingSpinner';
 import './style.css';
 
 class SearchForm extends React.Component {
