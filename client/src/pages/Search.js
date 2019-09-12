@@ -30,7 +30,7 @@ class Search extends React.Component {
         console.log(`searching... ${query}`);
         API.search(query)
             .then( jsonData => { 
-                // console.log(jsonData);
+                console.log(jsonData);
                 this.setState({
                     searchResults: jsonData.data.items,
                     searchText: ''
@@ -57,6 +57,8 @@ class Search extends React.Component {
             image: selectedBook[0].volumeInfo.imageLinks.smallThumbnail,
             previewLink: selectedBook[0].volumeInfo.previewLink
         }
+        // post request to api/books/
+        API.saveBook(bookToSave);
     }
 
     render() {
@@ -79,10 +81,10 @@ class Search extends React.Component {
                             authors={book.volumeInfo.authors.join(',')}
                             description={book.volumeInfo.description}
                             image={book.volumeInfo.imageLinks.smallThumbnail}
-                            btn1Click={ () => this.openBookPreview(book.volumeInfo.previewLink)}
-                            btn1Text='PREVIEW'
-                            btn2Click={() => this.saveBook(book.id)}
-                            btn2Text='SAVE'
+                            btn1Click={ () => this.openBookPreview(book.volumeInfo.previewLink) }
+                            btn1Text='PREVIEW BOOK'
+                            btn2Click={ () => this.saveBook(book.id) }
+                            btn2Text='SAVE TO READING LIST'
                         /> 
                     ))}
                 </Card>

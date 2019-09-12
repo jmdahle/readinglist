@@ -17,15 +17,17 @@ module.exports = {
     },
 
     create: function(request, response) {
+        // console.log('adding book to db', request.body)
         db.Book
             .create(request.body)
-            .then( dbModel => res.json(dbModel) )
+            .then( dbModel => response.json(dbModel) )
             .catch( error => response.status(422).json(error) );
       },
 
     remove: function(request, response) {
+        console.log('removing book from db', request.params.id)
         db.Book
-            .find( { _id: request.params.id } )
+            .findById( { _id: request.params.id } )
             .then( dbModel => dbModel.remove() )
             .then( dbModel => response.json(dbModel) )
             .catch( error => response.status(422).json(error) );
