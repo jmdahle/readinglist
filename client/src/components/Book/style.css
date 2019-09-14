@@ -16,3 +16,7 @@
 .btn-style:hover {
     color: #ffffff;
 }
+
+.bookImage {
+    width: 128px;
+}

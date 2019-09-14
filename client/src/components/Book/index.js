@@ -18,7 +18,7 @@ class Book extends React.Component {
                 </div>
                 <div className='row'>
                     <div className='col-md-3'>
-                        <img alt={this.props.title} src={this.props.image} />
+                        <img className='bookImage' alt={this.props.title} src={this.props.image} />
                     </div>
                     <div className='col-md-9'>
                         <p>{this.props.description}</p>
