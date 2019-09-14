@@ -52,9 +52,9 @@ class Search extends React.Component {
         let bookToSave = {
             foreignid: selectedBook[0].id,
             title: selectedBook[0].volumeInfo.title,
-            authors: selectedBook[0].volumeInfo.authors.join(','),
+            authors: selectedBook[0].volumeInfo.hasOwnProperty('authors') ? selectedBook[0].volumeInfo.authors.join(', ') : 'empty',
             description: selectedBook[0].volumeInfo.description || 'no description available',
-            image: selectedBook[0].volumeInfo.hasOwnProperty('imageLinks') ? selectedBook.volumeInfo.imageLinks.smallThumbnail : 'images/image-not-available.png',
+            image: selectedBook[0].volumeInfo.hasOwnProperty('imageLinks') ? selectedBook[0].volumeInfo.imageLinks.smallThumbnail : 'images/image-not-available.png',
             previewLink: selectedBook[0].volumeInfo.previewLink
         }
         // post request to api/books/
@@ -78,7 +78,7 @@ class Search extends React.Component {
                             key={book.id}
                             id={book.id}
                             title={book.volumeInfo.title}
-                            authors={book.volumeInfo.authors.join(',')}
+                            authors={ book.volumeInfo.hasOwnProperty('authors') ? book.volumeInfo.authors.join(', ') : 'empty'}
                             description={book.volumeInfo.description || 'no description available'}
                             image={ book.volumeInfo.hasOwnProperty('imageLinks') ? book.volumeInfo.imageLinks.smallThumbnail : 'images/image-not-available.png'}
                             btn1Click={ () => this.openBookPreview(book.volumeInfo.previewLink) }

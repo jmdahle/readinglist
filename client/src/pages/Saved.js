@@ -36,7 +36,7 @@ class Saved extends React.Component {
     deleteBook = dbId => {
         console.log('deleting book with _id of ', dbId);
         API.deleteBook(dbId)
-
+        this.getBooks();
     }
 
     componentDidMount = () => {
